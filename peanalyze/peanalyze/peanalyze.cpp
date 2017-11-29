@@ -74,6 +74,7 @@ void decodeSectionHeader(FILE * fp) {
 	puts("Analyze Section Header......\n");
 	int section_num = image_nt_headers32.FileHeader.NumberOfSections;
 	int i = 0;
+	fseek(fp, image_nt_headers32.FileHeader.SizeOfOptionalHeader + image_dos_header.e_lfanew + sizeof(IMAGE_FILE_HEADER)+sizeof(DWORD),SEEK_SET);
 	for (i = 0; i < section_num; ++i)
 	{
 		fread(&image_section_headers[i], sizeof(IMAGE_SECTION_HEADER), 1, fp);
@@ -105,8 +106,8 @@ void showSectionInfo() {
 	int i;
 	for (i = 0; i < section_num; ++i) {
 		//putchar('\n');
-		printf("%s\n", image_section_headers[i].Name);
-		printf("Virtual Size:0x%x\n", image_section_headers[i].Misc);
+		printf("%s\n", (image_section_headers[i].Name));
+		printf("Virtual Size:0x%x\n", image_section_headers[i].Misc.VirtualSize);
 		printf("Virtual Address:0x%x\n", image_section_headers[i].VirtualAddress + image_nt_headers32.OptionalHeader.ImageBase);
 		printf("Size of RawData:0x%x\n", image_section_headers[i].SizeOfRawData);
 		printf("Pointer to RawData:0x%x\n", image_section_headers[i].PointerToRawData);
@@ -164,8 +165,8 @@ void showIAT(FILE *fp) {
 		j = 0;
 		do {
 			k = 0;
-			fseek(fp, Rva2Raw(image_import_descriptors[i].OriginalFirstThunk+j*sizeof(int)), SEEK_SET);
-			fread(&INT_address, sizeof(int), 1, fp);
+			fseek(fp, Rva2Raw(image_import_descriptors[i].OriginalFirstThunk+j*sizeof(DWORD)), SEEK_SET);
+			fread(&INT_address, sizeof(DWORD), 1, fp);
 			if (INT_address == NULL)
 				break;
 			fseek(fp, Rva2Raw(INT_address), SEEK_SET);

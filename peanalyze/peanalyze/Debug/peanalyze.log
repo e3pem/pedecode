@@ -1,6 +1,5 @@
 ﻿  peanalyze.cpp
-e:\myproject\pedecode\peanalyze\peanalyze\peanalyze.cpp(109): warning C4477: “printf”: 格式字符串“%x”需要类型“unsigned int”的参数，但可变参数 1 拥有了类型“_IMAGE_SECTION_HEADER::<unnamed-type-Misc>”
-e:\myproject\pedecode\peanalyze\peanalyze\peanalyze.cpp(123): warning C4018: “>=”: 有符号/无符号不匹配
-e:\myproject\pedecode\peanalyze\peanalyze\peanalyze.cpp(123): warning C4018: “<=”: 有符号/无符号不匹配
+e:\myproject\pedecode\peanalyze\peanalyze\peanalyze.cpp(124): warning C4018: “>=”: 有符号/无符号不匹配
+e:\myproject\pedecode\peanalyze\peanalyze\peanalyze.cpp(124): warning C4018: “<=”: 有符号/无符号不匹配
   peanalyze.vcxproj -> E:\Myproject\pedecode\peanalyze\Debug\peanalyze.exe
   peanalyze.vcxproj -> E:\Myproject\pedecode\peanalyze\Debug\peanalyze.pdb (Full PDB)

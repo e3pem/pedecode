@@ -2,3 +2,10 @@
 *.obj
 *.o
 *.tlog
+*.exe
+*.db
+*.idb
+*.suo
+*.log
+*.pdb
+*.ilk
